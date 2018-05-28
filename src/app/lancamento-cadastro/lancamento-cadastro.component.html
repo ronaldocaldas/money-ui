@@ -1,56 +1,56 @@
 <div class="container">
-  <form>
-    <div class="ui-g-12">
-      <h1>Novo Lançamento</h1>
+  <form #f="ngForm" autocomplete="off">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Lançamento</h1>
+      </div>
+      <div class="ui-g-12">
+        <p-selectButton [options]="tipos" ngModel name="tipo" #tipo></p-selectButton>
+      </div>
+      <div class="ui-g-6 ui-md-3 ui-fluid">
+        <label>Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" name="vencimento"
+          [inline]=false [readonlyInput]=false [showIcon]=false
+          ngModel #vencimento="ngModel" required>
+        </p-calendar>
+        <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
+      </div>
+      <div class="ui-g-6  ui-md-3 ui-fluid">
+        <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-md-9  ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
+        <app-message [control]="descricao" error="required" text="Informe uma descricao"></app-message>
+        <app-message [control]="descricao" error="minlength" text="Mínimo de {{descricao.errors?.minlength?.requiredLength}} caracteres"></app-message>
+      </div>
+      <div class="ui-g-12 ui-md-3  ui-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" placeholder="R$ 0,00" name="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false'}"
+          ngModel required>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Categoria {{categoria.value}}</label>
+        <p-dropdown [options]="categorias" [autoWidth]="false"
+            placeholder="Selecione" name="categoria" ngModel #categoria required>
+        </p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Pessoa</label>
+        <p-dropdown name="Pessoa" ngModel [options]="pessoas" [autoWidth]="false"
+            [filter]="true" required placeholder="Selecione">
+        </p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label>Observação</label>
+        <textarea pInputTextarea rows="3"></textarea>
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="submit" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
     </div>
-    <div class="ui-g-12">
-      <p-selectButton [options]="tipos" #tipo></p-selectButton>
-    </div>
-    <div class="ui-g-6 ui-md-3 ui-fluid">
-      <label>Vencimento</label>
-      <p-calendar dateFormat="dd/mm/yy" [inline]=false [readonlyInput]=false [showIcon]=false></p-calendar>
-    </div>
-    <div class="ui-g-6  ui-md-3 ui-fluid">
-      <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
-      <p-calendar dateFormat="dd/mm/yy"></p-calendar>
-    </div>
-    <div class="ui-g-12 ui-md-9  ui-fluid">
-      <label>Descrição {{ descricao.errors | json  }}</label>
-      <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
-
-      <app-message [control]="descricao" error="required" text="Informe uma descricao"></app-message>
-      <app-message [control]="descricao" error="minlength" text="Mínimo de {{descricao.errors?.minlength?.requiredLength}} caracteres"></app-message>
-
-    </div>
-    <div class="ui-g-12 ui-md-3  ui-fluid">
-      <label>Valor</label>
-      <input pInputText type="text" placeholder="R$ 0,00" name="valor"
-        currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false'}"
-        ngModel>
-    </div>
-    <div class="ui-g-12 ui-md-6 ui-fluid">
-      <label>Categoria {{categoria.value}}</label>
-     <p-dropdown [options]="categorias" [autoWidth]="false"
-        placeholder="Selecione" #categoria>
-     </p-dropdown>
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-fluid">
-      <label>Pessoa</label>
-      <p-dropdown [options]="pessoas" [autoWidth]="false" [filter]="true"
-        placeholder="Selecione">
-   </p-dropdown>
-    </div>
-    <div class="ui-g-12 ui-fluid">
-      <label>Observação</label>
-      <textarea pInputTextarea rows="3"></textarea>
-    </div>
-
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Salvar"></button>
-      <button pButton type="submit" label="Novo" class="ui-button-info"></button>
-       <a href="javascript:;" >Voltar para a pesquisa</a>
-    </div>
-
   </form>
 </div>
