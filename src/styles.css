@@ -42,3 +42,6 @@ a:hover, a:focus {
 .ui-button {
   margin: 5px;
 }
+label {
+  margin: 5px;
+}
