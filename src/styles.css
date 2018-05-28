@@ -39,3 +39,6 @@ a:hover, a:focus {
   text-align: center;
 }
 
+.ui-button {
+  margin: 5px;
+}
