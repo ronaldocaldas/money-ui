@@ -1,8 +1,8 @@
-import { PessoasModule } from './pessoas/pessoas.module';
-import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { TabViewModule } from 'primeng/tabview';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
@@ -15,26 +15,23 @@ import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
 
-import { AppComponent } from './app.component';
-import { format } from 'util';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
-import { MessageComponent } from './message/message.component';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    MessageComponent
-  ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    InputTextModule,
+    ButtonModule,
     FormsModule,
-    LancamentosModule,
-    PessoasModule
+    DataTableModule,
+    TooltipModule,
+    InputTextareaModule,
+    CalendarModule,
+    SelectButtonModule,
+    DropdownModule,
+    InputMaskModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [PessoasPesquisaComponent,
+    PessoaCadastroComponent],
+    exports: [PessoasPesquisaComponent,
+      PessoaCadastroComponent]
 })
-export class AppModule { }
+export class PessoasModule { }
