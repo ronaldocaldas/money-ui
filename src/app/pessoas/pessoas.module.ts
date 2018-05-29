@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
@@ -19,16 +20,17 @@ import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     InputTextModule,
     ButtonModule,
-    FormsModule,
     DataTableModule,
     TooltipModule,
     InputTextareaModule,
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    InputMaskModule
+    InputMaskModule,
+    SharedModule
   ],
   declarations: [PessoasPesquisaComponent,
     PessoaCadastroComponent,
