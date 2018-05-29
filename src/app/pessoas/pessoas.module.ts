@@ -14,6 +14,7 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     InputMaskModule
   ],
   declarations: [PessoasPesquisaComponent,
-    PessoaCadastroComponent],
+    PessoaCadastroComponent,
+    PessoasGridComponent],
     exports: [PessoasPesquisaComponent,
       PessoaCadastroComponent]
 })
