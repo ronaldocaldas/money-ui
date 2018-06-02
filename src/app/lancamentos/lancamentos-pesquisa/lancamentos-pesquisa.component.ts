@@ -1,6 +1,6 @@
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 
 @Component({
@@ -15,6 +15,8 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   lancamentos = [];
 
+  @ViewChild('tabela') grid;
+
   constructor(private lancamentoService: LancamentoService) { }
 
   ngOnInit(): void {
@@ -24,12 +26,19 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.filtro.pagina = pagina;
     this.lancamentoService.pesquisar(this.filtro)
       .then(resultado => {
-        this.totalRegistros =  resultado.total;
+        this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
       });
   }
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
+  }
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+      .then(() => {
+        this.pesquisar();
+      });
   }
 }

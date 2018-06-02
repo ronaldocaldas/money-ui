@@ -52,4 +52,15 @@ export class LancamentoService {
         return resultado;
       });
   }
+  excluir(codigo: number) {
+    const headers = new Headers();
+
+    headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
+    .toPromise()
+    .then(() => null);
+
+  }
+
 }
