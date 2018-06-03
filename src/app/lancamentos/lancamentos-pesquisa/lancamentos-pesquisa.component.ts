@@ -38,7 +38,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   excluir(lancamento: any) {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
-        this.pesquisar();
+        this.grid.first = 0;
       });
   }
 }

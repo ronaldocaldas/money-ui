@@ -15,13 +15,13 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl = 'http://localhost:8080/lancamentos?resumo';
 
 
   constructor(private http: Http) { }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
-    const params = new URLSearchParams;
+    const params = new URLSearchParams();
     const headers = new Headers();
 
     headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
@@ -40,7 +40,7 @@ export class LancamentoService {
       params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: params })
+    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers, search: filtro })
       .toPromise()
       .then(response => {
         const responseJson = response.json();

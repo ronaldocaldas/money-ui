@@ -29,7 +29,7 @@
         <p-dataTable [value]="lancamentos" [paginator]="true" [rows]="filtro.itensPorPagina" [responsive]="true"
             emptyMessage="Nenhum lançamento encontrado" [lazy]="true" [totalRecords]="totalRegistros"
             (onLazyLoad)="aoMudarPagina($event)" #tabela>
-            <p-column field="pessoa" header="Pessoa"></p-column>
+            <p-column field="pessoa.nome" header="Pessoa"></p-column>
             <p-column field="descricao" header="Descrição"></p-column>
             <p-column field="dataVencimento" header="Vencimento" styleClass="col-data">
               <ng-template let-lanc="rowData" pTemplate="body">
