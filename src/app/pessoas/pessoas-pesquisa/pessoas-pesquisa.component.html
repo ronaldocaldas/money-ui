@@ -16,7 +16,9 @@
 
   <div class="ui g">
     <div class="ui-g-12">
-        <p-dataTable [value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true">
+        <p-dataTable [value]="pessoas" [paginator]="true" [rows]="5" [responsive]="true"
+            emptyMessages="Nenhuma pessoa encontrada" [rows]="filtro.itensPorPagina"
+            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)">
             <p-column field="nome" header="Nome"></p-column>
             <p-column field="endereco.cidade" header="Cidade"></p-column>
             <p-column field="endereco.estado" header="Estado"></p-column>
