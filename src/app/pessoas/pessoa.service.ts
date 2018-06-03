@@ -1,9 +1,11 @@
-import { Http, Headers , URLSearchParams} from '@angular/http';
+import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 
-export interface PessoaFiltro {
+export class PessoaFiltro {
   nome: string;
+  pagina = 0;
+  intensPorPagina = 5;
 }
 
 
@@ -20,13 +22,24 @@ export class PessoaService {
 
     headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
 
+    params.set('page', filtro.pagina.toString());
+    params.set('size', filtro.intensPorPagina.toString());
+
     if (filtro.nome) {
       params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoasUrl}`, { headers, search: params})
+    return this.http.get(`${this.pessoasUrl}`, { headers, search: params })
       .toPromise()
-      .then(response =>
-        response.json().content);
+      .then(response => {
+        const responseJson = response.json();
+        const pessoas = responseJson.content;
+        const resultado = {
+          pessoas,
+          total: responseJson.totalElements
+        };
+
+        return resultado;
+      });
   }
 }

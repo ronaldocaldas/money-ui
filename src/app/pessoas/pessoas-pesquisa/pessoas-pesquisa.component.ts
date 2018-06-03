@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoasPesquisaComponent implements OnInit {
 
-  nome: string;
+  filtro = new PessoaFiltro();
   pessoas = [];
 
   ngOnInit(): void {
@@ -17,7 +17,9 @@ export class PessoasPesquisaComponent implements OnInit {
   constructor(private pessoasService: PessoaService) { }
 
   pesquisar() {
-    return this.pessoasService.pesquisar({ nome: this.nome })
-      .then(pessoas => this.pessoas = pessoas);
+    return this.pessoasService.pesquisar(this.filtro)
+      .then(resultado => {
+        this.pessoas = resultado.pessoas;
+      });
   }
 }
