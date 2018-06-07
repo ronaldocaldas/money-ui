@@ -1,6 +1,9 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 import { ToastyModule } from 'ng2-toasty';
@@ -17,6 +20,8 @@ import { HttpModule } from '@angular/http';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { PessoaService } from './pessoas/pessoa.service';
 import { AnimationTransitionInstructionType } from '@angular/animations/browser/src/render/animation_engine_instruction';
+
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -36,7 +41,8 @@ import { AnimationTransitionInstructionType } from '@angular/animations/browser/
   providers: [
     LancamentoService,
     PessoaService,
-    ConfirmationService
+    ConfirmationService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
 })
