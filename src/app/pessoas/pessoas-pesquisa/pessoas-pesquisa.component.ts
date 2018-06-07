@@ -32,8 +32,12 @@ export class PessoasPesquisaComponent {
 
   excluir(pessoa: any) {
     this.pessoaService.excluir(pessoa.codigo)
-    .then(() => {
-      this.grid.first = 0;
-    });
+      .then(() => {
+        if (this.grid.first === 0) {
+          this.pesquisar();
+        } else {
+          this.grid.first = 0;
+        }
+      });
   }
 }
