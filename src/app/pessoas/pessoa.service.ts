@@ -1,5 +1,6 @@
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { promise } from 'protractor';
 
 
 export class PessoaFiltro {
@@ -43,14 +44,29 @@ export class PessoaService {
       });
   }
 
-  excluir(codigo: number) {
+  excluir(codigo: number): Promise<void> {
     const headers = new Headers();
 
     headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
 
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers })
-    .toPromise()
-    .then(() => null);
+      .toPromise()
+      .then(() => null);
+
+  }
+
+  mudarStatus(codigo: number, ativo: boolean): Promise<void> {
+    const headers = new Headers();
+    const params = new URLSearchParams();
+
+    headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
+    headers.append('Content-Type', 'application/json');
+
+    params.set('status', ativo ? 'false' : 'true');
+
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
+      .toPromise()
+      .then(() => null);
 
   }
 }

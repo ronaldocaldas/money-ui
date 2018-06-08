@@ -57,4 +57,17 @@ export class PessoasPesquisaComponent {
         this.tostyService.success('Lançamento excluído com sucesso.');
       }).catch(erro => this.errorhandlerService.handler(erro));
   }
+
+  atualizaStatus(pessoa: any) {
+    const novoStatus = !pessoa.ativo;
+
+    this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+
+        pessoa.ativo = novoStatus;
+        this.tostyService.success(`Pessoa ${acao} com sucesso!`);
+      })
+      .catch(erro => this.errorhandlerService.handler(erro));
+  }
 }

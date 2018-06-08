@@ -60,7 +60,6 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null);
-
   }
 
 }
