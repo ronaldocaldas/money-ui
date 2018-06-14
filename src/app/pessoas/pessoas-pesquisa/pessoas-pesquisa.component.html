@@ -27,7 +27,6 @@
                 <a href="javascript:;" [pTooltip]="pes.ativo ? 'Desativar' : 'Ativar'"
                 tooltipPosition="top" (click)="atualizaStatus(pes)">
                   {{pes.ativo ? 'Ativo' : 'Inativo'}}
-                  <div [ngClass]="far fa-thumbs-up"></div>
                 </a>
               </ng-template>
             </p-column>
