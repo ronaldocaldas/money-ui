@@ -66,6 +66,14 @@ export class PessoaService {
     return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
       .then(() => null);
+  }
 
+  listarTodas(): Promise<any> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
+
+    return this.http.get(`${this.pessoasUrl}`, { headers })
+      .toPromise()
+      .then(response => response.json().content);
   }
 }
