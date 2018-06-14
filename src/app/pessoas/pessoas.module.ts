@@ -5,7 +5,6 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TabViewModule } from 'primeng/tabview';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DataTableModule } from 'primeng/components/datatable/datatable';

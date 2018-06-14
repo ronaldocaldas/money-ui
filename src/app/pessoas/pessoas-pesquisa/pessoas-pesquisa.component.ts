@@ -1,6 +1,6 @@
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/api';

@@ -1,4 +1,3 @@
-import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';

@@ -1,6 +1,5 @@
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { promise } from 'protractor';
 
 
 export class PessoaFiltro {
