@@ -11,7 +11,7 @@ export class Lancamento {
   codigo: number;
   tipo = 'RECEITA';
   descricao: string;
-  datVencimento: Date;
+  dataVencimento: Date;
   dataPagamento: Date;
   valor: number;
   observacao: string;

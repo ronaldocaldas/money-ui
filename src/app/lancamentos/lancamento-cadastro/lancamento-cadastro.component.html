@@ -17,7 +17,7 @@
       </div>
       <div class="ui-g-6  ui-md-3 ui-fluid">
         <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
-        <p-calendar dateFormat="dd/mm/yy"></p-calendar>
+        <p-calendar  [(ngModel)]="lancamento.dataPagamento" name="dataPagamento" dateFormat="dd/mm/yy"></p-calendar>
       </div>
       <div class="ui-g-12 ui-md-9  ui-fluid">
         <label>Descrição</label>
@@ -31,7 +31,7 @@
         [(ngModel)]="lancamento.valor" required>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Categoria {{categoria.value}}</label>
+        <label>Categoria</label>
         <p-dropdown [options]="categorias" [autoWidth]="false"
             placeholder="Selecione" name="categoria"
             [(ngModel)]="lancamento.categoria.codigo" #categoria required>
@@ -45,7 +45,7 @@
       </div>
       <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
-        <textarea pInputTextarea rows="3"></textarea>
+        <textarea pInputTextarea  [(ngModel)]="lancamento.observacao" name="observacao" rows="3"></textarea>
       </div>
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
