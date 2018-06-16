@@ -1,3 +1,4 @@
+import { Pessoa } from './../core/model';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -75,5 +76,15 @@ export class PessoaService {
     return this.http.get(`${this.pessoasUrl}`, { headers })
       .toPromise()
       .then(response => response.json().content);
+  }
+
+  adicionar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW5AbW9uZXkuY29tOmFkbWlu');
+    headers.append('Content-Type', 'application/Json');
+
+    return this.http.post(this.pessoasUrl, JSON.stringify(pessoa), {headers})
+      .toPromise()
+      .then(response => response.json());
   }
 }
