@@ -1,4 +1,4 @@
-
+import { RouterModule } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -20,7 +20,7 @@ registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   imports: [
     CommonModule,
-
+    RouterModule,
     ToastyModule.forRoot(),
     ConfirmDialogModule
   ],

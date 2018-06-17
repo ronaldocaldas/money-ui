@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
@@ -19,6 +20,7 @@ import {InputMaskModule} from 'primeng/inputmask';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
