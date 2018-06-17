@@ -48,7 +48,7 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get editando() {
-    return   Boolean(this.lancamento.codigo);
+    return Boolean(this.lancamento.codigo);
   }
   carregarLancamento(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
@@ -57,7 +57,25 @@ export class LancamentoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handler(erro));
   }
+
   salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
+
+  atualizarLancamento(form: FormControl) {
+    this.lancamentoService.atualizar(this.lancamento)
+      .then(lancamento => {
+        this.lancamento = lancamento;
+        this.toastyService.success('Lançamento atualizado com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handler(erro));
+  }
+
+  adicionarLancamento(form: FormControl) {
     this.lancamentoService.adicionar(this.lancamento)
       .then(() => {
         this.toastyService.success('Lançamento adicionado com sucesso!');
@@ -82,4 +100,6 @@ export class LancamentoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handler(erro));
   }
+
+
 }
