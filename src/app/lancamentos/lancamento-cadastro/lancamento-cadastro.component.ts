@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 
@@ -33,7 +33,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private toastyService: ToastyService,
     private errorHandler: ErrorHandlerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -76,11 +77,19 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   adicionarLancamento(form: FormControl) {
+    console.log('Chamou o salvar');
     this.lancamentoService.adicionar(this.lancamento)
-      .then(() => {
+      .then(lancamentoAdicionado => {
         this.toastyService.success('Lançamento adicionado com sucesso!');
-        form.reset();
-        this.lancamento = new Lancamento();
+        // form.reset();
+        // this.lancamento = new Lancamento();
+
+        // redireciona pra /lancamentos
+        // this.router.navigate(['/lancamentos']);
+
+        // redireciona para o editar do lancamento criado
+        this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
+
       })
       .catch(erro => this.errorHandler.handler(erro));
   }
@@ -101,5 +110,14 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handler(erro));
   }
 
+  novo(form: FormControl) {
+    form.reset();
+    // executa uma função apos algum tempo especificado
+    setTimeout(function() {
+      this.lancamento = new Lancamento();
+    }.bind(this), 1);
+
+    this.router.navigate(['/lancamentos/novo']);
+  }
 
 }
