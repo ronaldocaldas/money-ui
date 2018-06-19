@@ -1,10 +1,11 @@
-import { RouterModule } from '@angular/router';
-import { SharedModule } from './../shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { PessoasRoutingModule } from './pessoas-routing.module';
+import { SharedModule } from './../shared/shared.module';
+import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
@@ -20,7 +21,6 @@ import {InputMaskModule} from 'primeng/inputmask';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
@@ -30,7 +30,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     SelectButtonModule,
     DropdownModule,
     InputMaskModule,
-    SharedModule
+    SharedModule,
+    PessoasRoutingModule
   ],
   declarations: [
     PessoasPesquisaComponent,
