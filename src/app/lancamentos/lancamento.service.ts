@@ -80,11 +80,11 @@ export class LancamentoService {
     return this.http.get(`${this.lancamentosUrl}/${codigo}`, { headers })
       .toPromise()
       .then(response => {
-        const vancamento = response.json() as Lancamento;
+        const lancamento = response.json() as Lancamento;
 
-        this.converterStringsParaDatas([vancamento]);
+        this.converterStringsParaDatas([lancamento]);
 
-        return vancamento;
+        return lancamento;
       });
   }
 

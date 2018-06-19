@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/nova', component: PessoaCadastroComponent },
+  { path: 'pessoas/:codigo', component: PessoaCadastroComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];
