@@ -5,6 +5,7 @@ import { ToastyService } from 'ng2-toasty';
 import { PessoaService } from './../pessoa.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { Pessoa } from '../../core/model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -16,11 +17,15 @@ export class PessoaCadastroComponent implements OnInit {
   constructor(
     private pessoaService: PessoaService,
     private toastyService: ToastyService,
-    private errorHandler: ErrorHandlerService) { }
+    private errorHandler: ErrorHandlerService,
+    private title: Title
+
+  ) { }
 
   pessoa = new Pessoa();
 
   ngOnInit() {
+    this.title.setTitle('Nova pessoa');
   }
 
   salvar(form: FormControl) {

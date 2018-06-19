@@ -13,6 +13,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { ConfirmationService } from 'primeng/components/common/api';
+import { Title } from '@angular/platform-browser';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -35,6 +36,7 @@ registerLocaleData(localePt, 'pt-BR');
     LancamentoService,
     PessoaService,
     ConfirmationService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
