@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +24,9 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
     LancamentosModule,
     PessoasModule,
     CoreModule,
+    SegurancaModule,
     AppRoutingModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
