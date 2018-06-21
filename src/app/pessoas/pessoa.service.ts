@@ -69,7 +69,6 @@ export class PessoaService {
       .then(response => response.json());
   }
 
-
   buscarPorCodigo(codigo: number): Promise<Pessoa> {
     return this.http.get(`${this.pessoasUrl}/${codigo}`)
       .toPromise()
@@ -78,7 +77,6 @@ export class PessoaService {
         return pessoa;
       });
   }
-
 
   atualizar(pessoa: Pessoa): Promise<Pessoa> {
     return this.http.put(`${this.pessoasUrl}/${pessoa.codigo}`,
