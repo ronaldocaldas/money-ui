@@ -40,6 +40,11 @@ export class AuthService {
       });
   }
 
+  temPermissao(permissao: string) {
+    return this.jwtPeyLoad && this.jwtPeyLoad.authorities.includes(permissao);
+
+  }
+
   private armazenarToken(token: string) {
     this.jwtPeyLoad = this.jwtHelper.decodeToken(token);
     // armazena no localstorage no navegador do usuário
