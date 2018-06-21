@@ -1,11 +1,14 @@
+import { JwtHelper } from 'angular2-jwt';
 import { RouterModule } from '@angular/router';
+
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
-import { ToastyModule, ToastComponent } from 'ng2-toasty';
+import { ToastyModule } from 'ng2-toasty';
+
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 import { ConfirmationService } from 'primeng/components/common/api';
 
@@ -40,6 +43,7 @@ registerLocaleData(localePt, 'pt-BR');
     ConfirmationService,
     Title,
     AuthService,
+    JwtHelper,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
