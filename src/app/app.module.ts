@@ -6,7 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
+import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
+
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
@@ -15,7 +18,8 @@ import { SegurancaModule } from './seguranca/seguranca.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     BrowserModule,

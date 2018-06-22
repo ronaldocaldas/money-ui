@@ -2,6 +2,7 @@ import { Http, RequestOptions } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './auth.guard';
 
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
@@ -37,7 +38,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [AuthService, Http,  RequestOptions]
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }

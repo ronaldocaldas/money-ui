@@ -69,6 +69,15 @@ export class AuthService {
 
   }
 
+  temQuaquerPermissao(roles) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private armazenarToken(token: string) {
     this.jwtPeyLoad = this.jwtHelper.decodeToken(token);
     // armazena no localstorage no navegador do usuário
