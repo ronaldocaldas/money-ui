@@ -58,6 +58,12 @@ export class AuthService {
         return Promise.resolve(null);
       });
   }
+
+  isAccessTokenInvalido() {
+    const token = localStorage.getItem('token');
+    return !token || this.jwtHelper.isTokenExpired(token);
+  }
+
   temPermissao(permissao: string) {
     return this.jwtPeyLoad && this.jwtPeyLoad.authorities.includes(permissao);
 
