@@ -1,9 +1,12 @@
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
+
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ErrorHandlerService } from '../../core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
+
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -22,6 +25,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
+    private auth: AuthService,
     private tostyService: ToastyService,
     private confirmationService: ConfirmationService,
     private errorhandlerService: ErrorHandlerService,
