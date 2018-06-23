@@ -36,7 +36,7 @@ export class PessoasPesquisaComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.pessoas = resultado.pessoas;
-      }).catch(erro => this.errorhandlerService.handler(erro));
+      }).catch(erro => this.errorhandlerService.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -62,7 +62,7 @@ export class PessoasPesquisaComponent implements OnInit {
           this.grid.first = 0;
         }
         this.tostyService.success('Lançamento excluído com sucesso.');
-      }).catch(erro => this.errorhandlerService.handler(erro));
+      }).catch(erro => this.errorhandlerService.handle(erro));
   }
 
   atualizaStatus(pessoa: any) {
@@ -75,6 +75,6 @@ export class PessoasPesquisaComponent implements OnInit {
         pessoa.ativo = novoStatus;
         this.tostyService.success(`Pessoa ${acao} com sucesso!`);
       })
-      .catch(erro => this.errorhandlerService.handler(erro));
+      .catch(erro => this.errorhandlerService.handle(erro));
   }
 }

@@ -47,7 +47,7 @@ export class PessoaCadastroComponent implements OnInit {
         this.pessoa = pessoa;
         this.atualizarTituloEdicao();
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar(form: FormControl) {
@@ -65,7 +65,7 @@ export class PessoaCadastroComponent implements OnInit {
       form.reset();
       this.pessoa = new Pessoa();
     })
-    .catch(erro  => this.errorHandler.handler(erro));
+    .catch(erro  => this.errorHandler.handle(erro));
   }
 
   atualizarPessoa(form: FormControl) {
@@ -75,7 +75,7 @@ export class PessoaCadastroComponent implements OnInit {
         this.toastyService.success('Pessoa atualizada com sucesso!');
         this.atualizarTituloEdicao();
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   novo(form: FormControl) {

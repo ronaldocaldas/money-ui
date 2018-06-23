@@ -42,7 +42,7 @@ export class LancamentosPesquisaComponent implements OnInit {
       .then(resultado => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
-      }).catch(erro => this.errorhandlerService.handler(erro));
+      }).catch(erro => this.errorhandlerService.handle(erro));
   }
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
@@ -67,7 +67,7 @@ export class LancamentosPesquisaComponent implements OnInit {
           this.grid.first = 0;
         }
         this.tostyService.success('Lançamento excluído com sucesso.');
-      }).catch(erro => this.errorhandlerService.handler(erro));
+      }).catch(erro => this.errorhandlerService.handle(erro));
 
   }
 }

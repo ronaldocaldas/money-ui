@@ -60,7 +60,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.lancamento = lancamento;
         this.atualizarTituloEdicao();
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar(form: FormControl) {
@@ -78,7 +78,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.toastyService.success('Lançamento atualizado com sucesso!');
         this.atualizarTituloEdicao();
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   adicionarLancamento(form: FormControl) {
@@ -96,7 +96,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
 
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarCategorias() {
@@ -104,7 +104,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(categorias => {
         this.categorias = categorias.map(c => ({ label: c.nome, value: c.codigo }));
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   carregarPessoas() {
@@ -112,7 +112,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(pessoas => {
         this.pessoas = pessoas.map(p => ({ label: p.nome, value: p.codigo }));
       })
-      .catch(erro => this.errorHandler.handler(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   novo(form: FormControl) {

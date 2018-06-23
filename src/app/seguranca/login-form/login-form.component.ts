@@ -22,7 +22,7 @@ export class LoginFormComponent {
       this.router.navigate(['/lancamentos']);
     })
       .catch(erro => {
-        this.errorHandlerService.handler(erro);
+        this.errorHandlerService.handle(erro);
       });
   }
 }
