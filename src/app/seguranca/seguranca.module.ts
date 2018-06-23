@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { SegurancaRountingModule } from './seguranca-routing.module';
 import { MoneyHttp } from './money-http';
 import { AuthService } from './auth.service';
+import { LogoutService } from './logout.service';
 
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
@@ -39,7 +40,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       useFactory: authHttpServiceFactory,
       deps: [AuthService, Http,  RequestOptions]
     },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SegurancaModule { }
