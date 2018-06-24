@@ -1,20 +1,21 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
+
 import { JwtHelper } from 'angular2-jwt';
+
 import { environment } from './../../environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
-  ouathTokenUrl: string;
-  jwtPeyLoad: any;
+  oauthTokenUrl: string;
+  jwtPayload: any;
 
-  constructor(private http: Http,
+  constructor(
+    private http: Http,
     private jwtHelper: JwtHelper
   ) {
-    this.ouathTokenUrl = `${environment.apiUrl}/oauth/token`;
+    this.oauthTokenUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 
@@ -24,20 +25,23 @@ export class AuthService {
     headers.append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
 
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    return this.http.post(this.ouathTokenUrl, body, { headers, withCredentials: true })
+
+    return this.http.post(this.oauthTokenUrl, body,
+        { headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.armazenarToken(response.json().access_token);
-
       })
       .catch(response => {
         if (response.status === 400) {
           const responseJson = response.json();
+
           if (responseJson.error === 'invalid_grant') {
             return Promise.reject('Usuário ou senha inválida!');
           }
-          return Promise.reject(response);
         }
+
+        return Promise.reject(response);
       });
   }
 
@@ -45,13 +49,17 @@ export class AuthService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+
     const body = 'grant_type=refresh_token';
 
-    return this.http.post(this.ouathTokenUrl, body, { headers, withCredentials: true })
+    return this.http.post(this.oauthTokenUrl, body,
+        { headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.armazenarToken(response.json().access_token);
-        console.log('Novo Acces token criado !');
+
+        console.log('Novo access token criado!');
+
         return Promise.resolve(null);
       })
       .catch(response => {
@@ -62,38 +70,40 @@ export class AuthService {
 
   limparAccessToken() {
     localStorage.removeItem('token');
-    this.jwtPeyLoad = null;
+    this.jwtPayload = null;
   }
 
   isAccessTokenInvalido() {
     const token = localStorage.getItem('token');
+
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
   temPermissao(permissao: string) {
-    return this.jwtPeyLoad && this.jwtPeyLoad.authorities.includes(permissao);
-
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
   }
 
-  temQuaquerPermissao(roles) {
+  temQualquerPermissao(roles) {
     for (const role of roles) {
       if (this.temPermissao(role)) {
         return true;
       }
     }
+
     return false;
   }
 
   private armazenarToken(token: string) {
-    this.jwtPeyLoad = this.jwtHelper.decodeToken(token);
-    // armazena no localstorage no navegador do usuário
+    this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
   }
 
   private carregarToken() {
     const token = localStorage.getItem('token');
+
     if (token) {
       this.armazenarToken(token);
     }
   }
+
 }

@@ -10,7 +10,7 @@
   </div>
 
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">{{ auth.jwtPeyLoad?.nome }}</li>
+    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
      *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')">
      <a routerLink="/lancamentos">Lancamentos</a></li>
